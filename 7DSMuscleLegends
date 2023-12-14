@@ -1,0 +1,35 @@
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
+local window = DrRayLibrary:Load("7DSHub", "Default")
+
+local Home = DrRayLibrary.newTab("Home", "Default")
+Home.newButton("Command", "Giving command script", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()   
+    
+end)
+
+Home.newButton("Fps Boost", "Boosting your fps by decrease materials", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/BobbieTun/FpsBoost/main/FpsBoost"))()
+    
+end)
+
+Home.newButton("Auto Clicker", "Give you auto clicker", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/MC%20KSystem%202"))()
+    
+end)
+
+Home.newButton("Noclip", "Noclip", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/BobbieTun/Noclip/main/Noclip"))()
+    
+end)
+
+
+
+local Players = DrRayLibrary.newTab("Player", "Default")
+
+local Farming = DrRayLibrary.newTab("Farm", "Default")
+
+local Tween = DrRayLibrary.newTab("Tween", "Default")
+
+local Collect = DrRayLibrary.newTab("Collect", "Default")
+
+local Grinding = DrRayLibrary.newTab("Grinding", "Default")
