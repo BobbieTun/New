@@ -54,7 +54,7 @@ Farming.newToggle("Auto glitch", "Turn on to Glitch", true, function(toggleState
     if toggleState then
         _G.loop = true
         while _G.loop == true do wait()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Option)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(selectedOption)
         end
     else
         _G.loop = false
