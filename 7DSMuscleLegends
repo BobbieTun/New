@@ -31,6 +31,13 @@ end)
 local Players = DrRayLibrary.newTab("Player", "Default")
 
 local Farming = DrRayLibrary.newTab("Farm", "Default")
+local P1 = -9031.58984, 5.25382137, -6079.56982, -0.419745117, 7.60323715e-08, -0.907642007, 3.93094197e-08, 1, 6.55902141e-08, 0.907642007, -8.14771006e-09, -0.419745117
+local P2 = -9031.69922, 5.25382137, -6034.89404, 0.149718016, -2.12263984e-08, -0.988728762, 3.24091793e-08, 1, -1.6560822e-08, 0.988728762, -2.95644327e-08, 0.149718016
+local P3 = -9031.69922, 5.25382137, -6034.89404, 0.149718016, 3.48566971e-08, -0.988728762, -5.32214521e-08, 1, 2.71950107e-08, 0.988728762, 4.8549996e-08, 0.149718016
+local P4 = -8999.30078, 15.2838478, -6121.55664, -0.922289491, -4.69393635e-10, -0.386499852, -1.77173842e-09, 1, 3.0133569e-09, 0.386499852, 3.463964e-09, -0.922289491
+Farming.newDropdown("Auto King Rock", "Select one of these options!", {"Position1","Position2","Position3","Position4"}, function(selectedOption)
+    Option = selectedOption
+end)
 
 local Tween = DrRayLibrary.newTab("Tween", "Default")
 
