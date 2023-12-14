@@ -22,6 +22,10 @@ Home.newButton("Noclip", "Noclip", function()
     
 end)
 
+Home.newButton("Infjump", "Giving player ability to jump mulple times", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/BobbieTun/Infjump/main/Infjump"))()
+    
+end)
 
 
 local Players = DrRayLibrary.newTab("Player", "Default")
