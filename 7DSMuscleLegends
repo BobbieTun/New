@@ -1,34 +1,44 @@
-local Players = game:GetService("Players"):GetChildren()
-local RunService = game:GetService("RunService")
-local highlight = Instance.new("Highlight")
-highlight.Name = "Highlight"
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
+local window = DrRayLibrary:Load("7DSHub", "Default")
 
-for i, v in pairs(Players) do
-    repeat wait() until v.Character
-    if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
-        local highlightClone = highlight:Clone()
-        highlightClone.Adornee = v.Character
-        highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
-        highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-        highlightClone.Name = "Highlight"
-    end
-end
-
-game.Players.PlayerAdded:Connect(function(player)
-    repeat wait() until player.Character
-    if not player.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
-        local highlightClone = highlight:Clone()
-        highlightClone.Adornee = player.Character
-        highlightClone.Parent = player.Character:FindFirstChild("HumanoidRootPart")
-        highlightClone.Name = "Highlight"
-    end
+local Home = DrRayLibrary.newTab("Home", "Default")
+Home.newButton("Command", "Giving command script", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()   
+    
 end)
 
-game.Players.PlayerRemoving:Connect(function(playerRemoved)
-    playerRemoved.Character:FindFirstChild("HumanoidRootPart").Highlight:Destroy()
+Home.newButton("Fps Boost", "Boosting your fps by decrease materials", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/BobbieTun/FpsBoost/main/FpsBoost"))()
+    
 end)
 
-RunService.Heartbeat:Connect(function()
+Home.newButton("Auto Clicker", "Give you auto clicker", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/MC%20KSystem%202"))()
+    
+end)
+
+Home.newButton("Noclip", "Noclip", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/BobbieTun/Noclip/main/Noclip"))()
+    
+end)
+
+Home.newButton("Infjump", "Giving player ability to jump mulple times", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/BobbieTun/Infjump/main/Infjump"))()
+    
+end)
+
+
+local Players = DrRayLibrary.newTab("Player", "Default")
+Players.newToggle("Toggle", "Toggle! (prints the state)", false, function(esp)
+    if esp then
+        Esp = true
+        while true do
+            wait()
+            local Players = game:GetService("Players"):GetChildren()
+    local RunService = game:GetService("RunService")
+    local highlight = Instance.new("Highlight")
+    highlight.Name = "Highlight"
+
     for i, v in pairs(Players) do
         repeat wait() until v.Character
         if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
@@ -37,7 +47,66 @@ RunService.Heartbeat:Connect(function()
             highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
             highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
             highlightClone.Name = "Highlight"
-            task.wait()
         end
+    end
+
+    game.Players.PlayerAdded:Connect(function(player)
+    repeat wait() until player.Character
+        if not player.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+            local highlightClone = highlight:Clone()
+            highlightClone.Adornee = player.Character
+            highlightClone.Parent = player.Character:FindFirstChild("HumanoidRootPart")
+            highlightClone.Name = "Highlight"
+        end
+    end)
+
+    game.Players.PlayerRemoving:Connect(function(playerRemoved)
+        playerRemoved.Character:FindFirstChild("HumanoidRootPart").Highlight:Destroy()
+    end)
+
+    RunService.Heartbeat:Connect(function()
+        for i, v in pairs(Players) do
+            repeat wait() until v.Character
+            if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+                local highlightClone = highlight:Clone()
+                highlightClone.Adornee = v.Character
+                highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+                highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                highlightClone.Name = "Highlight"
+                task.wait()
+            end
+        end
+        end)
+        end
+        
+    else
+        Esp = false
+        while false do
+            highlightClone:Destroy()
+
+            
+        end
+  
 end
 end)
+
+local Farming = DrRayLibrary.newTab("Farm", "Default")
+Farming.newButton("Muscle King Position 1", "Give you auto clicker", function()
+    TpP1()
+
+end)
+Farming.newButton("Muscle King Position 2", "Give you auto clicker", function()
+    TpP2()
+
+end)
+
+Farming.newButton("Muscle King Position 4", "Give you auto clicker", function()
+    TpP3()
+
+end)
+
+local Tween = DrRayLibrary.newTab("Tween", "Default")
+
+local Collect = DrRayLibrary.newTab("Collect", "Default")
+
+local Grinding = DrRayLibrary.newTab("Grinding", "Default")
