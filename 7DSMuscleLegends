@@ -1,52 +1,123 @@
-local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
-local window = DrRayLibrary:Load("7DSHub", "Default")
+local camera = workspace.CurrentCamera
 
-local Home = DrRayLibrary.newTab("Home", "Default")
-Home.newButton("Command", "Giving command script", function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()   
-    
-end)
+for _,v in pairs(game.Players:GetPlayers()) do
+    if v ~= game.Players.LocalPlayer and v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+        local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+        local Line = Drawing.New("Line")
+        Line.Visible = true
+        Line.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y /2)
+        Line.To = Vector2.new(vector.X, vector.Y)
+        Line.Color = Color3.fromRGB(0,0,0)
+        Line.Thicknes = 2
+        Line.Transparency = 1
 
-Home.newButton("Fps Boost", "Boosting your fps by decrease materials", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/BobbieTun/FpsBoost/main/FpsBoost"))()
-    
-end)
+        function Line()
+            game:GetService("RunService").RenderStepped:Connect(function (step)
+                if v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+                    local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+                    if onScreen == true then
+                        Line.To = Vector2.new(vector.X, vector.Y)
+                        Line.Visible = true
+                    else
+                        Line.Visible = false
+                    end
+                end
 
-Home.newButton("Auto Clicker", "Give you auto clicker", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/MC%20KSystem%202"))()
-    
-end)
-
-Home.newButton("Noclip", "Noclip", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/BobbieTun/Noclip/main/Noclip"))()
-    
-end)
-
-Home.newButton("Infjump", "Giving player ability to jump mulple times", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/BobbieTun/Infjump/main/Infjump"))()
-    
-end)
+                
+            end)
 
 
-local Players = DrRayLibrary.newTab("Player", "Default")
-
-local Farming = DrRayLibrary.newTab("Farm", "Default")
-Farming.newToggle("Position 1", "Turn on to Glitch", true, function(toggleState)
-    if toggleState then
-        _G.loop = true
-        while true do 
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9031.58984, 5.25382137, -6079.56982, -0.419745117, 7.60323715e-08, -0.907642007, 3.93094197e-08, 1, 6.55902141e-08, 0.907642007, -8.14771006e-09, -0.419745117)
         end
-    else
-        _G.loop = false
-        while false do 
-            break
-        end
+        coroutine.wrap(Line)()
+
+
+
     end
+    v.CharacterAdded:Connect(function ()
+        repeat wait() until v.Character ~= nil
+        repeat wait() until v.Character:FindFirstChild("HumanoidRootPart") ~= nil
+        local vector, onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+        local Line = Drawing.new("Line")
+        Line.Visible = true
+        Line.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
+        Line.To = Vector2.new(vector.X, vector.Y)
+        Line.Color = Color3.fromRGB(0,0,0)
+        Line.Thickness = 2
+        Line.Transparency = 1
+
+        function Line()
+            if v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+                local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+                if onScreen == true then
+                    Line.To = Vector2.new(Vector.X, vector.Y)
+                    Line.Visible = true
+                else
+                    Line.Visible = false
+                end
+            end
+            
+        end
+        coroutine.warp(Line)()
+    end)
+end
+game.Players.PlayerAdded:Connect(function (v)
+    if v ~= game.Players.LocalPlayer and v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+        local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+        local Line = Drawing.New("Line")
+        Line.Visible = true
+        Line.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y /2)
+        Line.To = Vector2.new(vector.X, vector.Y)
+        Line.Color = Color3.fromRGB(0,0,0)
+        Line.Thicknes = 2
+        Line.Transparency = 1
+
+        function Line()
+            game:GetService("RunService").RenderStepped:Connect(function (step)
+                if v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+                    local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+                    if onScreen == true then
+                        Line.To = Vector2.new(vector.X, vector.Y)
+                        Line.Visible = true
+                    else
+                        Line.Visible = false
+                    end
+                end
+
+                
+            end)
+
+
+        end
+        coroutine.wrap(Line)()
+
+
+
+    end
+    v.CharacterAdded:Connect(function ()
+        repeat wait() until v.Character ~= nil
+        repeat wait() until v.Character:FindFirstChild("HumanoidRootPart") ~= nil
+        local vector, onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+        local Line = Drawing.new("Line")
+        Line.Visible = true
+        Line.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
+        Line.To = Vector2.new(vector.X, vector.Y)
+        Line.Color = Color3.fromRGB(0,0,0)
+        Line.Thickness = 2
+        Line.Transparency = 1
+
+        function Line()
+            if v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+                local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+                if onScreen == true then
+                    Line.To = Vector2.new(Vector.X, vector.Y)
+                    Line.Visible = true
+                else
+                    Line.Visible = false
+                end
+            end
+            
+        end
+        coroutine.warp(Line)()
+    end)
+    
 end)
-
-local Tween = DrRayLibrary.newTab("Tween", "Default")
-
-local Collect = DrRayLibrary.newTab("Collect", "Default")
-
-local Grinding = DrRayLibrary.newTab("Grinding", "Default")
