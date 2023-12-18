@@ -1,123 +1,43 @@
-local camera = workspace.CurrentCamera
+local Players = game:GetService("Players"):GetChildren()
+local RunService = game:GetService("RunService")
+local highlight = Instance.new("Highlight")
+highlight.Name = "Highlight"
 
-for _,v in pairs(game.Players:GetPlayers()) do
-    if v ~= game.Players.LocalPlayer and v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
-        local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
-        local Line = Drawing.New("Line")
-        Line.Visible = true
-        Line.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y /2)
-        Line.To = Vector2.new(vector.X, vector.Y)
-        Line.Color = Color3.fromRGB(0,0,0)
-        Line.Thicknes = 2
-        Line.Transparency = 1
-
-        function Line()
-            game:GetService("RunService").RenderStepped:Connect(function (step)
-                if v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
-                    local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
-                    if onScreen == true then
-                        Line.To = Vector2.new(vector.X, vector.Y)
-                        Line.Visible = true
-                    else
-                        Line.Visible = false
-                    end
-                end
-
-                
-            end)
-
-
-        end
-        coroutine.wrap(Line)()
-
-
-
+for i, v in pairs(Players) do
+    repeat wait() until v.Character
+    if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+        local highlightClone = highlight:Clone()
+        highlightClone.Adornee = v.Character
+        highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+        highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+        highlightClone.Name = "Highlight"
     end
-    v.CharacterAdded:Connect(function ()
-        repeat wait() until v.Character ~= nil
-        repeat wait() until v.Character:FindFirstChild("HumanoidRootPart") ~= nil
-        local vector, onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
-        local Line = Drawing.new("Line")
-        Line.Visible = true
-        Line.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
-        Line.To = Vector2.new(vector.X, vector.Y)
-        Line.Color = Color3.fromRGB(0,0,0)
-        Line.Thickness = 2
-        Line.Transparency = 1
-
-        function Line()
-            if v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
-                local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
-                if onScreen == true then
-                    Line.To = Vector2.new(Vector.X, vector.Y)
-                    Line.Visible = true
-                else
-                    Line.Visible = false
-                end
-            end
-            
-        end
-        coroutine.warp(Line)()
-    end)
 end
-game.Players.PlayerAdded:Connect(function (v)
-    if v ~= game.Players.LocalPlayer and v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
-        local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
-        local Line = Drawing.New("Line")
-        Line.Visible = true
-        Line.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y /2)
-        Line.To = Vector2.new(vector.X, vector.Y)
-        Line.Color = Color3.fromRGB(0,0,0)
-        Line.Thicknes = 2
-        Line.Transparency = 1
 
-        function Line()
-            game:GetService("RunService").RenderStepped:Connect(function (step)
-                if v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
-                    local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
-                    if onScreen == true then
-                        Line.To = Vector2.new(vector.X, vector.Y)
-                        Line.Visible = true
-                    else
-                        Line.Visible = false
-                    end
-                end
-
-                
-            end)
-
-
-        end
-        coroutine.wrap(Line)()
-
-
-
+game.Players.PlayerAdded:Connect(function(player)
+    repeat wait() until player.Character
+    if not player.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+        local highlightClone = highlight:Clone()
+        highlightClone.Adornee = player.Character
+        highlightClone.Parent = player.Character:FindFirstChild("HumanoidRootPart")
+        highlightClone.Name = "Highlight"
     end
-    v.CharacterAdded:Connect(function ()
-        repeat wait() until v.Character ~= nil
-        repeat wait() until v.Character:FindFirstChild("HumanoidRootPart") ~= nil
-        local vector, onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
-        local Line = Drawing.new("Line")
-        Line.Visible = true
-        Line.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
-        Line.To = Vector2.new(vector.X, vector.Y)
-        Line.Color = Color3.fromRGB(0,0,0)
-        Line.Thickness = 2
-        Line.Transparency = 1
+end)
 
-        function Line()
-            if v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
-                local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
-                if onScreen == true then
-                    Line.To = Vector2.new(Vector.X, vector.Y)
-                    Line.Visible = true
-                else
-                    Line.Visible = false
-                end
-            end
-            
+game.Players.PlayerRemoving:Connect(function(playerRemoved)
+    playerRemoved.Character:FindFirstChild("HumanoidRootPart").Highlight:Destroy()
+end)
+
+RunService.Heartbeat:Connect(function()
+    for i, v in pairs(Players) do
+        repeat wait() until v.Character
+        if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+            local highlightClone = highlight:Clone()
+            highlightClone.Adornee = v.Character
+            highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+            highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+            highlightClone.Name = "Highlight"
+            task.wait()
         end
-        coroutine.warp(Line)()
-    end)
-    
+end
 end)
