@@ -129,7 +129,7 @@ HomeTab:Toggle("Toggle autopunch Remote ", function(state)
     if state then
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack.Punch)  
         _G.loop = true
-        while _G.loop do 
+        while _G.loop do wait(0)
            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("punch", "leftHand")
           game:GetService("Players").LocalPlayer.muscleEvent:FireServer("punch", "rightHand")
         end 
@@ -140,7 +140,7 @@ end)
 HomeTab:Toggle("Auto Punch ", function(state)
     if state then      
         _G.loop = true
-        while _G.loop do wait()
+        while _G.loop do wait(0)
            for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                if v:IsA("Tool") and v.Name == "Punch" then
                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(v)
