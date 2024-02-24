@@ -124,13 +124,8 @@ function  AutoPunch()
 )
     
 end
-HomeTab:Button("Auto punch- Delay", function ()
-    wait()
-    AutoPunch()
 
-    
-end)
-HomeTab:Toggle("Toggle autopunch  ", function(state)
+HomeTab:Toggle("Toggle autopunch Remote ", function(state)
     if state then
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack.Punch)  
         _G.loop = true
@@ -141,6 +136,31 @@ HomeTab:Toggle("Toggle autopunch  ", function(state)
     else
         _G.loop = false
     end
+end)
+HomeTab:Toggle("Auto Punch ", function(state)
+    if state then      
+        _G.loop = true
+        while _G.loop do wait()
+           for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+               if v:IsA("Tool") and v.Name == "Punch" then
+                   game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(v)
+               end
+           end
+           for i,h in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+               if h:IsA("Tool") and h.Name == "Punch" then
+                   h:Activate()
+               end
+            end
+        end 
+    else
+        _G.loop = false
+    end
+end)
+HomeTab:Button("Auto punch- Delay", function ()
+    wait()
+    AutoPunch()
+
+    
 end)
 
 
