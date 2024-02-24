@@ -130,11 +130,11 @@ HomeTab:Button("Auto punch- Delay", function ()
 
     
 end)
-HomeTab:Toggle("Status: ", function(state)
+HomeTab:Toggle("Toggle autopunch  ", function(state)
     if state then
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack.Punch)  
         _G.loop = true
-        while _G.loop do wait()
+        while _G.loop do 
            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("punch", "leftHand")
           game:GetService("Players").LocalPlayer.muscleEvent:FireServer("punch", "rightHand")
         end 
